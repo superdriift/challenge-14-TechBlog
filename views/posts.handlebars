@@ -1,0 +1,37 @@
+<h2>
+    Welcome back {{username}}!
+</h2>
+
+<form id="createpost">
+  What would you like to talk about?<input id="body" /><br />
+  <input type="submit" value="Post">
+</form>
+
+{{#each postData as |postData|}}
+<p>
+ {{postData.body}} <br />
+ <small>{{user.username}}</small>
+</p>
+<hr />
+{{/each}}
+
+<script>
+    document.getElementById('createpost').addEventListener('submit', (event)=> {
+        event.preventDefault();
+       fetch('/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                body: document.getElementById('body').value
+            })
+        }).then(res => {
+            if (res.ok) {
+                window.location.replace(
+                    '/posts'
+                );
+            }
+        })
+    })
+</script>
