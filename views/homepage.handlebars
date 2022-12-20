@@ -1,4 +1,7 @@
 <h2>
+    Welcome back {{username}}!
+</h2>
+<h2>
     Login
 </h2>
 <form id="login">
@@ -19,8 +22,30 @@
     <input type="submit" value"login" />
 </form>
 
+
+{{!-- <script>
+    document.getElementById('createpost').addEventListener('submit', (event)=> {
+        event.preventDefault();
+       fetch('/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                body: document.getElementById('body').value
+            })
+        }).then(res => {
+            if (res.ok) {
+                window.location.replace(
+                    '/posts'
+                );
+            }
+        })
+    }) --}}
+{{!-- </script> --}}
+
 <script>
-    document.getElementById('login').addEventListener('submit', (event) => {
+        document.getElementById('login').addEventListener('submit', (event) => {
         event.preventDefault();
         fetch('/login', {
             method: 'POST',
